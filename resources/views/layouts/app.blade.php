@@ -63,7 +63,7 @@
                                         <a href="{{ route('profile', ['user' => auth()->user()]) }}">Profile</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('notes_list', ['user' => auth()->user()]) }}"> Notes</a>
+                                        <a href="{{ route('notes.list', ['user' => auth()->user()]) }}"> Notes</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"

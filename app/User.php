@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function addNote($title, $content) {
         $this->notes()->create(compact('title', 'content'));
     }
+
+    public function comments() {
+        return $this->hasMany(Comment::class, 'author_id');
+    }
 }

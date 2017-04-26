@@ -20,7 +20,7 @@
                         <div class="clearfix"></div><br>
 
                         <div id="add-note" class="collapse">
-                            @include('notes._add_note_form')
+                            @include('notes._add_note_form', ['user' => $user])
                         </div>
                     </div>
                 </div>

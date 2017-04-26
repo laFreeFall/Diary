@@ -12,7 +12,17 @@
                     </div>
 
                     <div class="panel-body">
-                        <p class="text-center">And something more here...</p>
+
+                        <div class="col-md-6">
+                            <h3 class="text-center">Notes</h3>
+                            <h3 class="text-center"><a href="{{ route('notes.list', $user) }}">{{ $user->notes->count() }}</a></h3>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="text-center">Comments</h3>
+                            <h3 class="text-center">{{ $user->comments->count() }}</h3>
+                        </div>
+
+                        <div class="col-md-12"></div>
                     </div>
                 </div>
 

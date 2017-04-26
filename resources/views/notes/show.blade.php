@@ -17,8 +17,17 @@
                             <p>Author: <a href="{{ route('profile', ['user' => $user]) }}">{{ $user->name }}</a> @ {{ $note->created_at->diffForHumans() }}</p>
                         </div>
                     </div>
-
                 </div>
+                <p><strong>Comments: </strong> {{ $note->comments->count() }}</p>
+                @forelse($note->comments as $comment)
+                    @include('comments._comment')
+                @empty
+                    <div class="alert alert-warning">
+                        There are no comments yet. Post a first one! (:
+                    </div>
+                @endforelse
+
+                @include('comments._add_comment_form')
 
 
             </div>

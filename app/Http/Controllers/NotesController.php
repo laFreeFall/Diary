@@ -16,12 +16,14 @@ class NotesController extends Controller
     }
 
     public function show(User $user, Note $note) {
-        return view('notes.show', compact('user', 'note'));
+        $comments = $note->comments;
+        return view('notes.show', compact('user', 'note', 'comments'));
     }
 
-    public function store () {
+    public function store (User $user) {
         //auth()->user()->notes()->create($request->only('title', 'content'));
-        auth()->user()->addNote(request('title'), request('content'));
+//        auth()->user()->addNote(request('title'), request('content'));
+        $user->addNote(request('title'), request('content'));
 
         return back();
     }

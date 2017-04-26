@@ -12,4 +12,12 @@ class Note extends Model
     public function author() {
         return $this->belongsTo(User::class);
     }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function addComment($author_id, $content) {
+        $this->comments()->create(compact('author_id', 'content'));
+    }
 }
