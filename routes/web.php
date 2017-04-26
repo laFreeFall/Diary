@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Auth::routes();
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('{user}', 'UsersController@profile')->name('profile');
+    Route::get('{user}/notes', 'NotesController@index')->name('notes_list');
+    Route::get('{user}/notes/{note}', 'NotesController@show')->name('note');
+
+    Route::post('notes', 'NotesController@store');
 });
+
+Route::get('/', 'HomeController@index');

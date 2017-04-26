@@ -1,0 +1,39 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="text-center">
+                            {{ $user->name }}`s diary
+                        </h2>
+                        <h3 class="text-center">
+                            <span class="badge">{{ $notes->count() }}</span> notes
+                        </h3>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <button data-toggle="collapse" data-target="#add-note" class="btn btn-info pull-right">Post a Note</button>
+                        <div class="clearfix"></div><br>
+
+                        <div id="add-note" class="collapse">
+                            @include('notes._add_note_form')
+                        </div>
+                    </div>
+                </div>
+
+                @forelse($notes as $note)
+                    @include('notes._note')
+                @empty
+                    <div class="alert alert-warning">
+                        User <strong>{{ $user->name }}</strong> haven't posted any notes yet ):
+                    </div>
+                @endforelse
+
+            </div>
+        </div>
+    </div>
+@endsection

@@ -26,4 +26,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
+    public function notes() {
+        return $this->hasMany(Note::class, 'author_id');
+    }
+
+    public function addNote($title, $content) {
+        $this->notes()->create(compact('title', 'content'));
+    }
 }
