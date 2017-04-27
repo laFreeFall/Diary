@@ -31,8 +31,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::patch('{user}/notes/{note}', 'NotesController@update')->name('note.update');
 
     //ajax
-    Route::post('note/like', 'LikesController@storeNote')->name('like.note');
-    Route::post('comment/like', 'LikesController@storeComment')->name('like.comment');
+    Route::post('like', 'LikesController@store')->name('like.store');
+//    Route::post('note/like', 'LikesController@storeNote')->name('like.note');
+//    Route::post('comment/like', 'LikesController@storeComment')->name('like.comment');
 });
 
 Route::get('/', 'HomeController@index');

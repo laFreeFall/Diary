@@ -51,7 +51,7 @@
         });
         $.ajax({
             method: "POST",
-            url: "/note/like",
+            url: "/like",
             data: {
                 likable_id: $(this).data('noteid'),
                 likable_type: 'note'
