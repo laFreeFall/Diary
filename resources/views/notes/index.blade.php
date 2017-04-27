@@ -42,29 +42,5 @@
 @endsection
 
 @push('scripts')
-<script>
-    $('.like-btn').click(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            method: "POST",
-            url: "/like",
-            data: {
-                likable_id: $(this).data('noteid'),
-                likable_type: 'note'
-            }
-        }).done(function(data) {
-            var likesDiv = $('#like-btn-' + data[1]);
-            if(data[0]) {
-                likesDiv.children('.fa').removeClass('fa-heart-o').addClass('fa-heart');
-            } else {
-                likesDiv.children('.fa').removeClass('fa-heart').addClass('fa-heart-o');
-            }
-            likesDiv.children('.likes-count').html(data[2]);
-        });
-    })
-</script>
+    <script src="{{ asset('js/like.js') }}"></script>
 @endpush

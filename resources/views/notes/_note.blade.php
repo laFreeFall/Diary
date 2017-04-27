@@ -2,7 +2,7 @@
 
     <div class="panel-heading note-title">
             <h4>
-                <button type="button" class="btn btn-sm btn-default like-btn" id="like-btn-{{ $note->id }}" data-noteid="{{ $note->id }}">
+                <button type="button" class="btn btn-sm btn-default like-btn" id="note-like-btn-{{ $note->id }}" data-id="{{ $note->id }}" data-morph="note">
                     <span class="likes-count">{{ $note->likes->count() }}</span>
                     <i class="fa {{ auth()->user()->likedNote($note) ? 'fa-heart' : 'fa-heart-o' }} text-primary"></i>
                 </button>
