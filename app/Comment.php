@@ -17,10 +17,7 @@ class Comment extends Model
     }
 
     public function likes() {
-        return $this->morphTo(Like::class, 'likable');
+        return $this->morphMany(Like::class, 'likable');
     }
 
-    public function rating() {
-        return $this->likes->count();
-    }
 }

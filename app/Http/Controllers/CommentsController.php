@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CommentsController extends Controller
 {
     public function index(User $user) {
-        $comments = $user->comments()->with('note')->paginate(10);
+        $comments = $user->comments()->with('note', 'likes')->paginate(10);
 
         return view('comments.index', compact('user', 'comments'));
     }

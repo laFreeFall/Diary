@@ -56,4 +56,8 @@ class User extends Authenticatable
     public function likedNote(Note $note) {
         return $note->likes->contains('user_id', $this->id);
     }
+
+    public function likedComment(Comment $comment) {
+        return $comment->likes->contains('user_id', $this->id);
+    }
 }

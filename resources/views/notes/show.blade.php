@@ -48,5 +48,31 @@
 
     }
 </script>
+
+<script>
+    $('.like-comment-btn').click(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            method: "POST",
+            url: "/comment/like",
+            data: {
+                likable_id: $(this).data('commentid'),
+                likable_type: 'comment'
+            }
+        }).done(function(data) {
+            var likesDiv = $('#like-btn-' + data[1]);
+            if(data[0]) {
+                likesDiv.children('.fa').removeClass('fa-heart-o').addClass('fa-heart');
+            } else {
+                likesDiv.children('.fa').removeClass('fa-heart').addClass('fa-heart-o');
+            }
+            likesDiv.children('.likes-count').html(data[2]);
+        });
+    })
+</script>
 @endpush
 

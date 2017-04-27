@@ -35,7 +35,4 @@ class Note extends Model
         return $this->morphMany(Like::class, 'likable');
     }
 
-    public function getRatingAttribute() {
-        return $this->likes()->count();
-    }
 }

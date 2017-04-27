@@ -17,6 +17,10 @@
                             {{ $comment->content }}
                         </div>
                         <div class="panel-footer">
+                            <button type="button" class="btn btn-xs btn-default like-comment-btn pull-left" id="like-btn-{{ $comment->id }}" data-commentid="{{ $comment->id }}">
+                                <span class="likes-count">{{ $comment->likes->count() }}</span>
+                                <i class="fa {{ auth()->user()->likedComment($comment) ? 'fa-heart' : 'fa-heart-o' }} text-primary"></i>
+                            </button>
                             Posted to <a href="{{ route('note', ['user' => $user, 'note' => $comment->note]) }}">{{ $comment->note->title }}</a> @ {{ $comment->created_at->diffForHumans() }}
                         </div>
                     </div>

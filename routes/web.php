@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     //ajax
     Route::post('note/like', 'LikesController@storeNote')->name('like.note');
+    Route::post('comment/like', 'LikesController@storeComment')->name('like.comment');
 });
 
 Route::get('/', 'HomeController@index');

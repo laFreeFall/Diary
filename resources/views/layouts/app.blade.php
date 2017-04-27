@@ -55,7 +55,7 @@
                             <a href="{{ route('categories.list') }}">Categories</a>
                         </li>
                         <li>
-                            <a href="{{ route('comments.list', auth()->user()) }}">Categories</a>
+                            <a href="{{ route('comments.list', auth()->user()) }}">Comments</a>
                         </li>
                     </ul>
 

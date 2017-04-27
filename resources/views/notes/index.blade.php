@@ -44,7 +44,6 @@
 @push('scripts')
 <script>
     $('.like-btn').click(function() {
-        console.log('Clicked on ' + $(this).data('noteid'));
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
