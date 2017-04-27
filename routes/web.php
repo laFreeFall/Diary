@@ -19,8 +19,14 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('{user}/notes', 'NotesController@index')->name('notes.list');
     Route::get('{user}/notes/{note}', 'NotesController@show')->name('note');
 
+    Route::get('{user}/notes/{note}/edit', 'NotesController@edit')->name('note.edit');
+    Route::delete('{user}/notes/{note}/destroy', 'NotesController@destroy')->name('note.delete');
+
     Route::post('{user}/notes', 'NotesController@store')->name('note.store');
     Route::post('{user}/notes/{note}', 'CommentsController@store')->name('comment.store');
+
+    Route::patch('{user}/notes/{note}', 'NotesController@update')->name('note.update');
+
 });
 
 Route::get('/', 'HomeController@index');

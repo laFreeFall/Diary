@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -43,7 +45,12 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        &nbsp;<li>
+                            <a href="{{ route('profile', auth()->user()) }}">Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('notes.list', auth()->user()) }}">Notes</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -83,11 +90,18 @@
                 </div>
             </div>
         </nav>
+        <div class="container">
+            @include('flash::message')
+            @yield('content')
+        </div>
 
-        @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        $('div.flash-notification').not('.alert-important').delay(3000).fadeOut(500);
+    </script>
+    @stack('scripts')
 </body>
 </html>

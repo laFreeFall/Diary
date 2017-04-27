@@ -1,3 +1,8 @@
-<p>{{ $comment->content }}</p>
-<p>Posted by {{ $comment->author->name }} @ {{ $comment->created_at->diffForHumans() }}</p>
-<hr><br>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <p>{{ $comment->content }}</p>
+    </div>
+    <div class="panel-footer">
+        <p>Posted by <a href="{{ route('profile', ['user' => $user]) }}">{{ $comment->author->name }}</a> @ {{ $comment->created_at->diffForHumans() }}</p>
+    </div>
+</div>
