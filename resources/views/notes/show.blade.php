@@ -5,6 +5,10 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading note-title">
+                    <button type="button" class="btn btn-sm btn-default like-btn" id="note-like-btn-{{ $note->id }}" data-id="{{ $note->id }}" data-morph="note">
+                        <span class="likes-count">{{ $note->likes->count() }}</span>
+                        <i class="fa {{ auth()->user()->likedNote($note) ? 'fa-heart' : 'fa-heart-o' }} text-primary"></i>
+                    </button>
                     <h4 class="text-center">{{ $note->title }}
                     <div class="btn-group btn-group-sm pull-right" role="group">
                         <a href="{{ route('note.edit', ['user' => auth()->user(), 'note' => $note]) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>

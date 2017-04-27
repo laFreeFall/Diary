@@ -17,7 +17,7 @@
                             {{ $comment->content }}
                         </div>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-xs btn-default like-comment-btn pull-left" id="like-btn-{{ $comment->id }}" data-commentid="{{ $comment->id }}">
+                            <button type="button" class="btn btn-xs btn-default like-btn pull-left" id="comment-like-btn-{{ $comment->id }}" data-morph="comment" data-id="{{ $comment->id }}">
                                 <span class="likes-count">{{ $comment->likes->count() }}</span>
                                 <i class="fa {{ auth()->user()->likedComment($comment) ? 'fa-heart' : 'fa-heart-o' }} text-primary"></i>
                             </button>
@@ -37,3 +37,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/like.js') }}"></script>
+@endpush
