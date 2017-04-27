@@ -30,4 +30,12 @@ class Note extends Model
             $query->where('category_id', $category->id);
         }
     }
+
+    public function likes() {
+        return $this->morphMany(Like::class, 'likable');
+    }
+
+    public function getRatingAttribute() {
+        return $this->likes()->count();
+    }
 }

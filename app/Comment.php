@@ -15,4 +15,12 @@ class Comment extends Model
     public function note() {
         return $this->belongsTo(Note::class);
     }
+
+    public function likes() {
+        return $this->morphTo(Like::class, 'likable');
+    }
+
+    public function rating() {
+        return $this->likes->count();
+    }
 }

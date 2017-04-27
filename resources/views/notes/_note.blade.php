@@ -1,7 +1,13 @@
 <div class="panel panel-default">
 
     <div class="panel-heading note-title">
-            <h4><a href="{{ route('note', ['user' => $user, 'note' => $note]) }}">{{ $note->title }}</a></h4>
+            <h4>
+                <button type="button" class="btn btn-sm btn-default like-btn" id="like-btn-{{ $note->id }}" data-noteid="{{ $note->id }}">
+                    <span class="likes-count">{{ $note->likes->count() }}</span>
+                    <i class="fa {{ auth()->user()->likedNote($note) ? 'fa-heart' : 'fa-heart-o' }} text-primary"></i>
+                </button>
+                <a href="{{ route('note', ['user' => $user, 'note' => $note]) }}">{{ $note->title }}</a>
+            </h4>
     </div>
 
     <div class="panel-body note-body">

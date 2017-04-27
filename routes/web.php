@@ -30,7 +30,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::patch('{user}/notes/{note}', 'NotesController@update')->name('note.update');
 
-
+    //ajax
+    Route::post('note/like', 'LikesController@storeNote')->name('like.note');
 });
 
 Route::get('/', 'HomeController@index');

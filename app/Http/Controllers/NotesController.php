@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Requests\StoreNoteRequest;
+use App\Like;
 use App\Note;
 use App\User;
 use Illuminate\Http\Request;
@@ -17,6 +18,8 @@ class NotesController extends Controller
         $notes = $user->notes()->
             with('category')->
             withCount('comments')->
+//            withCount('likes')->
+            with('likes')->
             latest()->
             filterCategory($category)->
             paginate(10);
@@ -58,5 +61,20 @@ class NotesController extends Controller
         flash('Your note has been successfully deleted!', 'warning');
 
         return redirect()->route('notes.list', $user);
+    }
+
+    public function like(Request $request) {
+//        Like::create([
+//            'user_id' => $request->user_id,
+//            'likable_id' => $request->note_id,
+//            'likable_type' => 'note'
+//        ]);
+
+//        auth()->user()->likes()->save([
+//            'likable_id' => $request->note_id,
+//            'likable_type' => 'note'
+//        ]);
+//        dd($request->likable_id);
+        auth()->user()->postLike($request->likable_id, 'note');
     }
 }
