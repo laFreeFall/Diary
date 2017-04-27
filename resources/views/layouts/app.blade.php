@@ -51,6 +51,12 @@
                         <li>
                             <a href="{{ route('notes.list', auth()->user()) }}">Notes</a>
                         </li>
+                        <li>
+                            <a href="{{ route('categories.list') }}">Categories</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('comments.list', auth()->user()) }}">Comments</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

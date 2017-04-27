@@ -15,8 +15,11 @@
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
+    Route::get('categories', 'CategoriesController@index')->name('categories.list');
+
     Route::get('{user}', 'UsersController@profile')->name('profile');
     Route::get('{user}/notes', 'NotesController@index')->name('notes.list');
+    Route::get('{user}/comments', 'CommentsController@index')->name('comments.list');
     Route::get('{user}/notes/{note}', 'NotesController@show')->name('note');
 
     Route::get('{user}/notes/{note}/edit', 'NotesController@edit')->name('note.edit');
@@ -26,6 +29,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('{user}/notes/{note}', 'CommentsController@store')->name('comment.store');
 
     Route::patch('{user}/notes/{note}', 'NotesController@update')->name('note.update');
+
 
 });
 

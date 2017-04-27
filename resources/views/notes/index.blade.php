@@ -34,7 +34,7 @@
             @endforelse
 
             <div class="pagination-links text-center">
-                {{ $notes->links() }}
+                {{ $notes->appends(Request::except('page'))->links() }}
             </div>
 
         </div>
